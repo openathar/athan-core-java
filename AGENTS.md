@@ -1,18 +1,27 @@
 # AGENTS.md — athan-core-java
 
-Public Core SDK der Athar-Plattform (openathar). Reine, zustandslose
-Berechnungslogik: Gebetszeiten (MWL/ISNA/Umm Al-Qura/...), Qibla-Winkel,
-Hijri-Kalender-Konvertierung. Kein DB-Zugriff, kein State.
+Public Core SDK of the Athar platform (openathar). Pure, stateless
+calculation logic: prayer times (MWL/ISNA/Umm Al-Qura/...), Qibla bearing,
+Hijri calendar conversion. No DB access, no state.
 
-## Verknuepfungen
-- Architektur/Roadmap: `../../AGENTS.md` (Superproject `business/athar`)
-- Repo-Regeln: `~/Development/harness/agents/business-repo.md`
+## Links
 
-## Grundsatz
-Diese Library ist die EINZIGE Quelle der Wahrheit für die
-Berechnungslogik — wird sowohl vom Backend (`api-service`) als auch von der
-Mobile-App (`athar-mobile-app`, embedded/offline) genutzt. Niemals die Logik
-an zweiter Stelle re-implementieren.
+- Architecture/roadmap: `../../AGENTS.md` (superproject `business/athar`)
+- Repo conventions: `~/Development/harness/agents/business-repo.md`
 
-Referenz-Algorithmus: PrayTimes.org-Spezifikation. Unit-Tests gegen bekannte
-Referenzwerte sind Pflicht vor jedem Merge.
+## Ground rule
+
+This library is meant to be the ONE source of truth for calculation
+logic — used by both the backend (`api-service`) and the mobile app
+(`athar-mobile-app`, embedded/offline). Never reimplement the logic a
+second time.
+
+Reference algorithm: the PrayTimes.org specification, cross-checked against
+what the web frontend (`athar-web`) already computes/shows today — the web
+is the de-facto reference implementation until this library exists. Unit
+tests against known reference values are required before every merge.
+
+## Current state
+
+Scaffold only — no code yet. See the superproject's `docs/architecture.md`
+for the concrete sequence of what gets built first and why.
