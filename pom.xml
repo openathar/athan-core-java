@@ -9,7 +9,29 @@
     <version>0.1.0-SNAPSHOT</version>
     <name>athan-core-java</name>
     <description>Pure, stateless calculation logic for the Athar platform (prayer times, Hijri calendar, Qibla).</description>
+    <url>https://github.com/openathar/athan-core-java</url>
     <packaging>jar</packaging>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Ahmad Al Zoubi</name>
+            <url>https://github.com/aazoubi</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/openathar/athan-core-java.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/openathar/athan-core-java.git</developerConnection>
+        <url>https://github.com/openathar/athan-core-java</url>
+    </scm>
 
     <properties>
         <maven.compiler.release>25</maven.compiler.release>
@@ -35,4 +57,52 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <!-- Release profile for publishing to Maven Central (0.x test phase):
+             attach sources + javadoc jars and GPG-sign all artifacts.
+             Run with: mvn -Prelease clean deploy
+             Requires GPG key + Central Portal token in ~/.m2/settings.xml. -->
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.3.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals><goal>jar-no-fork</goal></goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.11.2</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals><goal>jar</goal></goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.2.7</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals><goal>sign</goal></goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
