@@ -33,6 +33,19 @@
         <url>https://github.com/openathar/athan-core-java</url>
     </scm>
 
+    <!-- Central Portal (central.sonatype.com): deploy with `mvn -Prelease clean deploy`,
+         authenticated via the User Token in ~/.m2/settings.xml (server id "central"). -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>central</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>central</id>
+            <url>https://central.sonatype.com/repository/maven-central/</url>
+        </repository>
+    </distributionManagement>
+
     <properties>
         <maven.compiler.release>25</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
