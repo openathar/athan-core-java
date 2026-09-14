@@ -1,0 +1,20 @@
+{
+  "packages": {
+    "test-driven-development": {
+      "version": "1.0.0",
+      "sourceCommit": "9cbe1a6",
+      "installedAt": "2026-09-14T19:07:49.471Z",
+      "files": {
+        "SKILL.md": "7c0c6ac057c19d7f8be65d9f49c3a638703b868f4625c78b70da5439d5d74fca"
+      }
+    },
+    "spec-driven-development": {
+      "version": "1.0.0",
+      "sourceCommit": "9cbe1a6",
+      "installedAt": "2026-09-14T19:07:49.503Z",
+      "files": {
+        "SKILL.md": "f7129bca8742bad73f60209bd237e8b10dab6f1fae8576dc552fb1923bc1e721"
+      }
+    }
+  }
+}
