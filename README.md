@@ -4,7 +4,7 @@
 > port) and Hijri conversion (Umm al-Qura) with unit tests against reference
 > values. Qibla bearing still to come.
 
-The Core SDK (Java/Kotlin) for precise, offline-capable prayer time, Qibla
+The Core SDK (Java 25 / Maven) for precise, offline-capable prayer time, Qibla
 direction, and Hijri calendar calculation. Part of the Athar platform
 (Sadaqah Jariyah, 100% open source) — see [openathar](https://github.com/openathar).
 
@@ -25,7 +25,7 @@ switched over to this engine.
 ## Building
 
 ```sh
-./gradlew build   # compiles JVM target and runs the unit tests
+mvn verify   # compiles and runs the unit tests (Java 25)
 ```
 
 ## License
