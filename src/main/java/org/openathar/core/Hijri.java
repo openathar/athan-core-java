@@ -49,6 +49,13 @@ public final class Hijri {
         return null;
     }
 
+    /** Localized name of a Hijri month (1–12); unknown locales fall back to English. */
+    public static String monthName(int month, String locale) {
+        String key = locale == null ? "en" : locale;
+        List<String> names = HijriMonths.NAMES.getOrDefault(key, HijriMonths.NAMES.get("en"));
+        return names.get(month - 1);
+    }
+
     private static int hijriToJdnApprox(int y, int m, int d) {
         return d + (int) Math.ceil(29.5 * (m - 1)) + (y - 1) * 354 + (3 + 11 * y) / 30 + 1948440 - 1;
     }

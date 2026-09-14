@@ -53,4 +53,14 @@ class HijriTest {
     void invalidHijriDateReturnsNull() {
         assertNull(Hijri.hijriToGregorian(1448, 9, 30));
     }
+
+    @Test
+    void monthNamesAreLocalized() {
+        assertEquals("Muharram", Hijri.monthName(1, "en"));
+        assertEquals("Rabi' al-thani", Hijri.monthName(4, "en"));
+        assertEquals("رمضان", Hijri.monthName(9, "ar"));
+        assertEquals("Ramadan", Hijri.monthName(9, "de"));
+        assertEquals("Ramadan", Hijri.monthName(9, "xx"));
+        assertEquals("Ramadan", Hijri.monthName(9, null));
+    }
 }
