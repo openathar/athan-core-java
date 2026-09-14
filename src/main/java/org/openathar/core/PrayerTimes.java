@@ -17,6 +17,10 @@ public final class PrayerTimes {
     private final Map<Prayer, Double> tune;
     private final Rounding rounding;
 
+    /** Duha window: starts 15 min after sunrise, ends 10 min before dhuhr. */
+    private static final long DUHA_START_OFFSET_MINUTES = 15;
+    private static final long DUHA_END_OFFSET_MINUTES = 10;
+
     public PrayerTimes() {
         this(Method.MWL, AsrMethod.STANDARD, HighLatMethod.NIGHT_MIDDLE, 0.0, Map.of(), Rounding.NEAREST);
     }
@@ -90,15 +94,20 @@ public final class PrayerTimes {
     }
 
     private PrayerTimesResult convertTimes(Map<Prayer, Double> times, Ctx ctx) {
+        long sunrise = convert(times.get(Prayer.SUNRISE), ctx);
+        long dhuhr = convert(times.get(Prayer.DHUHR), ctx);
         return new PrayerTimesResult(
             convert(times.get(Prayer.FAJR), ctx),
-            convert(times.get(Prayer.SUNRISE), ctx),
-            convert(times.get(Prayer.DHUHR), ctx),
+            sunrise,
+            dhuhr,
             convert(times.get(Prayer.ASR), ctx),
             convert(times.get(Prayer.SUNSET), ctx),
             convert(times.get(Prayer.MAGHRIB), ctx),
             convert(times.get(Prayer.ISHA), ctx),
-            convert(times.get(Prayer.MIDNIGHT), ctx));
+            convert(times.get(Prayer.MIDNIGHT), ctx),
+            sunrise + DUHA_START_OFFSET_MINUTES * 60_000L,
+            dhuhr - DUHA_END_OFFSET_MINUTES * 60_000L,
+            Math.round((sunrise + (dhuhr - sunrise) / 2.0) / 60_000.0) * 60_000L);
     }
 
     private long convert(double t, Ctx ctx) {
