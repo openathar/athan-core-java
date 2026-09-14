@@ -23,8 +23,17 @@ tests against known reference values are required before every merge.
 
 ## Current state
 
-Scaffold only — no code yet. See the superproject's `docs/architecture.md`
-for the concrete sequence of what gets built first and why.
+First calculation code landed: prayer times (PrayTimes.org v3.2 port,
+`PrayerTimes.kt`, pure Kotlin in commonMain) and Hijri conversion
+(`Hijri.kt`, jvmMain via `HijrahChronology` = Umm al-Qura), each with unit
+tests against reference values generated from the official praytime.js v3.2
+library and the web's ICU-based hijri logic. Qibla bearing is still to come.
+
+Build with `./gradlew build`. The prayer-time math is pure Kotlin
+(commonMain, KMP-ready); Hijri currently sits in jvmMain because it leans on
+`java.time.chrono.HijrahChronology` — the migration point for the mobile
+target is replacing that with kotlinx-datetime or an embedded Umm al-Qura
+table.
 
 ## APM (Agent Package Manager)
 

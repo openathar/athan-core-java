@@ -1,8 +1,8 @@
 # athan-core-java
 
-> **Status: scaffold.** README and contributor notes only — no code yet.
-> See [why](https://github.com/openathar/athar/blob/main/docs/architecture.md)
-> and what comes first.
+> **Status: first calculation code landed.** Prayer times (PrayTimes.org v3.2
+> port) and Hijri conversion (Umm al-Qura) with unit tests against reference
+> values. Qibla bearing still to come.
 
 The Core SDK (Java/Kotlin) for precise, offline-capable prayer time, Qibla
 direction, and Hijri calendar calculation. Part of the Athar platform
@@ -17,9 +17,16 @@ that quietly drift apart over time.
 
 Until this repo has code, the [web frontend](https://github.com/openathar/athar-web)
 computes Hijri dates itself in JavaScript and calls the external Aladhan API
-for prayer times, as a deliberate placeholder. When this library gets
-built, the web's existing logic and parameters count as the spec to match —
-not a clean-room reimplementation of PrayTimes.org.
+for prayer times, as a deliberate placeholder. This library's first code
+(prayer times + Hijri) was ported to match the web's existing logic and
+parameters exactly — the web stays the reference until the API and web are
+switched over to this engine.
+
+## Building
+
+```sh
+./gradlew build   # compiles JVM target and runs the unit tests
+```
 
 ## License
 
