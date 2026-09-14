@@ -23,11 +23,14 @@ tests against known reference values are required before every merge.
 
 ## Current state
 
-First calculation code landed: prayer times (PrayTimes.org v3.2 port,
-`PrayerTimes.java`, pure Java) and Hijri conversion (`Hijri.java` via
-`HijrahChronology` = Umm al-Qura), each with unit tests against reference
-values generated from the official praytime.js v3.2 library and the web's
-ICU-based hijri logic. Qibla bearing is still to come.
+Calculation code landed: prayer times (PrayTimes.org v3.2 port,
+`PrayerTimes.java`, pure Java), Hijri conversion (`Hijri.java` via
+`HijrahChronology` = Umm al-Qura), and Qibla bearing (`Qibla.java`), each
+with unit tests against reference values generated from the official
+praytime.js v3.2 library, the web's ICU-based hijri logic, and the
+independent Adhan library. Plus invariant tests, a Duha window
+(sunrise+15min … dhuhr−10min, best = midpoint), a CI pipeline, and
+`known-drift-risks.md` documenting the edge cases.
 
 Build with `mvn verify` (Java 25, Maven, JUnit 6). The prayer-time math is
 pure Java (no Spring, no state); Hijri leans on
