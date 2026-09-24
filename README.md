@@ -1,5 +1,12 @@
 # athan-core-java
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.png" />
+    <img src="docs/logo-light.png" alt="Athar — the word أثر" width="360" />
+  </picture>
+</p>
+
 The Core SDK (Java 25 / Maven) for precise, offline-capable prayer time,
 Qibla direction, and Hijri calendar calculation. Part of the Athar platform
 (Sadaqah Jariyah, 100% open source) — see [openathar](https://github.com/openathar).
